@@ -1,3 +1,4 @@
+"use client";
 import {
   Route,
   Routes,
@@ -12,6 +13,7 @@ import { LikedPosts } from "@/_root/pages";
 import { useUserContext } from "@/context/AuthContext";
 import { useGetUserById } from "@/lib/react-query/queries";
 import { GridPostList, Loader } from "@/components/shared";
+import { useState } from "react";
 
 interface StabBlockProps {
   value: string | number;
@@ -26,6 +28,10 @@ const StatBlock = ({ value, label }: StabBlockProps) => (
 );
 
 const Profile = () => {
+  //temporary code
+  const [follow, setFollow] = useState(false);
+  //temporary code
+
   const { id } = useParams();
   const { user } = useUserContext();
   const { pathname } = useLocation();
@@ -90,9 +96,22 @@ const Profile = () => {
               </Link>
             </div>
             <div className={`${user.id === id && "hidden"}`}>
-              <Button type="button" className="shad-button_primary px-8">
-                Follow
-              </Button>
+              {!follow && (
+                <Button
+                  type="button"
+                  className="shad-button_primary px-8"
+                  onClick={() => setFollow(!follow)}>
+                  Follow
+                </Button>
+              )}
+              {follow && (
+                <Button
+                  type="button"
+                  className="shad-button_secondary px-8"
+                  onClick={() => setFollow(!follow)}>
+                  Following
+                </Button>
+              )}
             </div>
           </div>
         </div>
