@@ -14,11 +14,10 @@ export default function AuthLayout() {
           <section className="flex flex-1 justify-center items-center flex-col py-10">
             <Outlet />
           </section>
-
           <img
-            src="/assets/images/side-img.svg"
+            src="/assets/images/plane.gif"
             alt="logo"
-            className="hidden xl:block h-screen w-1/2 object-cover bg-no-repeat"
+            className="hidden xl:block h-auto p-48 bg-no-repeat"
           />
         </>
       )}
